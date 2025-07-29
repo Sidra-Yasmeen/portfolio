@@ -460,6 +460,64 @@ alighn-item:center;
     .typing-role { font-size: 1.4rem; }
     .navbar-brand { font-size: 1.4rem; }
   }
+  /* Container with rotation and animation */
+    .follow-me-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left top;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      cursor: pointer;
+      /* Transition for smooth animation */
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      padding: 10px;
+      z-index: 9999;
+    }
+
+    /* Animate rotation to 0 and add a slight scale on hover */
+    .follow-me-sidebar:hover {
+      transform: translateY(-50%) rotate(0deg) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Style for the "Follow Me" label */
+    .follow-tag {
+      background-color: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 20px;
+      margin-right: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    /* Icons style */
+    .social-link {
+      margin: 0 10px;
+      font-size: 24px;
+      color: #555;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    /* Hover effect on icons */
+    .social-link:hover {
+      color: var(--atomic-tangerine);
+      transform: scale(1.2);
+    }
+
+    /* Platform-specific colors */
+    .linkedin {
+      color: #0e76a8;
+    }
+    .github {
+      color: #333;
+    }
 </style>
 </head>
 <body>
@@ -669,7 +727,15 @@ alighn-item:center;
     </div>
   </div>
 </section>
-
+<div class="follow-me-sidebar">
+    <div class="follow-tag">Follow Me</div>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/yourusername" target="_blank" class="social-link github" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
