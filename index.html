@@ -460,32 +460,28 @@ alighn-item:center;
     .typing-role { font-size: 1.4rem; }
     .navbar-brand { font-size: 1.4rem; }
   }
-  /* Container with rotation and animation */
-    .follow-me-sidebar {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%) rotate(-90deg);
-      transform-origin: left top;
-      display: flex;
-      align-items: center;
-      background: transparent;
-      cursor: pointer;
-      /* Transition for smooth animation */
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-      padding: 10px;
-      z-index: 9999;
-    }
+   .follow-me-sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left top; /* ensures smooth rotation */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  z-index: 9999;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
 
     /* Animate rotation to 0 and add a slight scale on hover */
-    .follow-me-sidebar:hover {
-      transform: translateY(-50%) rotate(0deg) scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
+   .follow-me-sidebar:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
 
     /* Style for the "Follow Me" label */
     .follow-tag {
-      background-color: #333;
+      background-color: #0fa3b1;
       color: #fff;
       padding: 8px 12px;
       border-radius: 20px;
