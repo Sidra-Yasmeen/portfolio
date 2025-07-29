@@ -1,441 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <style>
-    body {
-      margin: 0;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-    }
-    a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .navbar {
-      background-color: #161b22;
-      z-index: 1000;
-    }
-    .hero {
-      padding: 100px 0;
-      text-align: center;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 3rem;
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-    }
-    .typing-role {
-      font-size: 1.5rem;
-      color: #58a6ff;
-      margin-top: 10px;
-      min-height: 1.5em;
-    }
-    .section {
-  background-color: #0b1120; /* Dark solid background */
-  border-radius: 12px;
-  padding: 50px 30px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-.section {
-  animation: fadeIn 1s ease-in-out;
-}
-.about-section {
-  background-color: #0b1120; 
-  padding: 60px 0;
-  position: relative;
-  z-index: 1;
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sidra Yasmeen - Portfolio</title>
+<!-- Bootstrap & Font Awesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<style>
+  :root {
+    /* New palette */
+    --moonstone: #0fa3b1;
+    --honeydew: #d9e5d6;
+    --vanilla: #eddea4;
+    --atomic-tangerine: #f7a072;
+    --sandy-brown: #ff9b42;
 
+    /* Light variants for overlays, shadows etc. */
+    --light-shadow: rgba(15, 163, 177, 0.3);
+    --hover-shadow: rgba(247, 160, 114, 0.4);
+  }
+
+  body {
+    margin: 0;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  a {
+    color: var(--atomic-tangerine);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  a:hover {
+    color: var(--moonstone);
+    transform: translateY(-2px);
+  }
+
+  /* Navbar */
+  .navbar {
+    background-color: var(--light-shadow);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+  }
+  .navbar-brand {
+    color: var(--moonstone);
+    font-weight: bold;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  .nav-link {
+    color: #c9d1d9 !important;
+    margin: 0 15px;
+    font-weight: 500;
+    position: relative;
+  }
+  .nav-link:hover::after {
+    width: 80%;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 10%;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+    transition: all 0.3s ease;
+  }
+
+  /* Hero section */
+  .hero {
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, var(--atomic-tangerine), var(--moonstone));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    animation: gradientShift 5s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .typing-role {
+    font-size: 1.8rem;
+    color: var(--sandy-brown);
+    margin-top: 15px;
+    min-height: 2em;
+    font-weight: 600;
+  }
+  .hero p {
+    max-width: 700px;
+    margin: 25px auto 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    background-color: #0b1120;
+    border-radius: 12px;
+    padding: 50px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Gradient bar on sections */
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* About section styles */
+  .about-container {
+    background: transparent;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 25px rgba(237, 222, 164, 0.3);
+    border: 2px solid var(--atomic-tangerine);
+    position: relative;
+ margin-top: 40px;
+    margin-bottom: 40px;
+
+  }
+  .about-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(237,222,164,0.1), transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 .container {
-  background-color: #151e3f; 
-  border-radius: 15px;
-  padding: 40px;
-  box-shadow: 0 0 20px #00ffbf99;
-  border: 2px solid #00ffbf;
+  text-align: center;
+  position: relative;
+  margin-bottom: 50px; /* spacing */
 }
-
-.about-section h2,
-.about-section p {
-  color: #ffffff;
-}
-
-.about-section p {
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-    .card {
-      background-color: #151e3f;
-      color: #c9d1d9;
-  box-shadow: 0 0 20px #00ffbf99;
-      border: 2px solid #00ffbf;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
-    }
-    .skill-icon {
-      font-size: 2rem;
-      color: #58a6ff;
-      margin-bottom: 10px;
-    }
-.skills-section {
-  background-color: #0b1120;
-  padding: 60px 20px;
-}
-
-.skills-section h2 {
-  color: #ffffff;
-  font-size: 32px;
+ .about-section h2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2.8rem;
   margin-bottom: 40px;
+  color: #fff;
 }
 
-.skill-card {
-  background-color: #151e3f;
-  color: #ffffff;
-  border: 2px solid #00ffbf;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #00ffbf99;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Underline with gradient */
+.about-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+  border-radius: 2px;
 }
 
-.skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 30px rgba(0, 255, 191, 0.5);
+/* Dot */
+.about-section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--atomic-tangerine);
+  border-radius: 50%;
+  /* Start position at the beginning of underline */
+  left: 20%;
+  transform: translateX(-50%);
+  animation: rollAlong 2s linear infinite;
 }
 
-.skill-icon {
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: #00ffbf;
+/* Animation to move only along the underline */
+@keyframes rollAlong {
+   0% {
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+  .about-section p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+text-align: justify;
+  text-justify: inter-word;
+  }
+  .animated-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(15, 163, 177, 0.3);
+    transition: all 0.5s ease;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+  }
+  .animated-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(15, 163, 177, 0.4);
+  }
+
+  /* Buttons */
+  .btn-custom {
+    background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(15, 163, 177, 0.2);
+alighn-item:center;
+  }
+  .btn-custom:hover {
+    background: linear-gradient(135deg, var(--sandy-brown), var(--atomic-tangerine));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 155, 66, 0.3);
+  }
+
+  /* Skills section */
+  .skills-section {
+ position: relative;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #fff;
+    padding: 60px 20px;
+  }
+  .skills-section h2 {
+    color: #fff;
+    font-size: 2.8rem;
+  display: inline-block;
+    margin-bottom: 40px;
+    position: relative;
+    margin-bottom: 70px;
+  }
+  .skills-section h2::after {
+    content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+  border-radius: 2px;
 }
 
-.skill-card h5 {
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
+/* Dot */
+.skills-section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--atomic-tangerine);
+  border-radius: 50%;
+  left: 0%;
+  transform: translateX(-50%);
+  animation: rollAlong 2s linear infinite;
 }
 
+/* Animation to move only along the underline */
+@keyframes rollAlong {
+   0% {
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
 
-    .footer {
-      background-color: #161b22;
-      text-align: center;
-      padding: 20px 0;
-    }
-    canvas#cobweb {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      background: #0d1117;
-    }
-    .about-img {
-      max-width: 100%;
-      height: auto;
-    }
-    .animate-about {
-      animation: fadeInUp 1s ease-in-out;
-    }
-    @keyframes fadeInUp {
-      0% {opacity: 0; transform: translateY(30px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-  </style>
+  .skill-card {
+    background-color: #1f2641;
+    color: #fff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border: 2px solid var(--atomic-tangerine);
+  }
+  .skill-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 15px;
+    background: radial-gradient(circle, rgba(15, 163, 177, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(15, 163, 177, 0.4);
+  }
+  .skill-card:hover::after {
+    opacity: 1;
+  }
+  .skill-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: var(--sandy-brown);
+    transition: all 0.3s ease;
+  }
+  .skill-card:hover .skill-icon {
+    transform: scale(1.2);
+    color: var(--moonstone);
+  }
+
+  /* Projects & Experience cards */
+  .project-section h2,.experience-section h2,.contact-section h2 {
+      position: relative;
+  display: inline-block;
+    color: #fff;
+    font-size: 2.6rem;
+  }
+.project-section h2::after, .experience-section h2::after,.contact-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+  border-radius: 2px;
+}
+
+/* Dot */
+.project-section h2::before,.experience-section h2::before,.contact-section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--atomic-tangerine);
+  border-radius: 50%;
+  /* Start position at the beginning of underline */
+  left: 20%;
+  transform: translateX(-50%);
+  animation: rollAlong 2s linear infinite;
+}
+
+/* Animation to move only along the underline */
+@keyframes rollAlong {
+   0% {
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+  .project-card, .experience-card {
+    background-color: #2c3654;
+    color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    border: 2px solid var(--atomic-tangerine);
+    text-alighn: justify;
+  }
+
+  .project-card:hover, .experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(15, 163, 177, 0.4);
+  }
+  .project-card h5 ,.experience-card h5 {
+    margin-bottom: 15px;
+    color: var(--sandy-brown);
+  }
+.project-card p ,.experience-card p ,.contact-card p{
+  text-align: justify;
+  text-justify: inter-word; 
+    color: #EDDEA4;
+  }
+  .footer p {
+    margin: 10px 0;
+    color: #aaa;
+  }
+  .social-icons {
+    margin-top: 10px;
+  }
+  .social-icons a {
+    color: var(--sandy-brown);
+    font-size: 24px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+  }
+  .social-icons a:hover {
+    color: var(--moonstone);
+    transform: scale(1.2);
+  }
+
+  /* Canvas background (full background) */
+  #cobweb {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: transparent;
+  }
+
+  /* Responsive adjustments */
+  @media(max-width:768px) {
+    h1 { font-size: 2.2rem; }
+    .typing-role { font-size: 1.4rem; }
+    .navbar-brand { font-size: 1.4rem; }
+  }
+</style>
 </head>
 <body>
-  <canvas id="cobweb"></canvas>
+<!-- Canvas for background animation -->
+<canvas id="cobweb"></canvas>
 
-  <nav class="navbar navbar-expand-lg navbar-dark px-3">
-    <a class="navbar-brand" href="#">Sidra Yasmeen</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3 px-4">
+  <a class="navbar-brand" href="#">Sidra Yasmeen</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <section class="hero">
-    <h1>Hello, I'm <span class="gradient-text">Sidra Yasmeen</span></h1>
-    <p class="typing-role" id="typing-role"></p>
-    <p class="mt-4">I am passionate about designing and building modern web experiences. <br>With a strong foundation in front-end and full-stack development, I aim to create visually appealing and highly functional digital solutions that make an impact.</p>
-</div>
-  </section>
+<!-- Hero -->
+<section class="hero" id="home">
+  <h1>Hello, I'm <span class="gradient-text">Sidra Yasmeen</span></h1>
+  <p class="typing-role" id="typing-role"></p>
+  <p class="mt-4" style="max-width:700px; margin:20px auto; font-size:1.2rem; line-height:1.6;">
+    I am passionate about designing and building modern web experiences. <br>
+    With a strong foundation in front-end and full-stack development, I aim to create visually appealing and highly functional digital solutions that make an impact.
+  </p>
+</section>
 
-<section id="about" class="about-section py-5">
+<!-- About Me -->
+<section id="about" class="about-section scroll-animate">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 text-center">
-       <img src="https://mkaleemdev.github.io/portfolio/assest/image/about-img.png" alt="Female sitting at desktop" class="img-fluid animated-image" />
-
-      </div>
-      <div class="col-md-6 text-white">
-        <h2 class="text-center mb-4">About Me</h2>
-        <p>
-          I am a Front-End Developer with over 2+ years of experience specializing in HTML, CSS,
-          JavaScript, React.js. Skilled in creating responsive, user-friendly web applications, I excel at
-          transforming complex requirements into seamless and scalable solutions.
-        </p>
-        <p>
-          My expertise in modern JavaScript frameworks allows me to build optimized, maintainable
-          code that enhances both performance and user experience. I enjoy collaborating with teams
-          to deliver top-notch digital products.
-        </p>
+    <h2 class="text-center mb-4">About Us</h2>
+    <div class="about-container">
+      
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0 text-center">
+          <img src="https://mkaleemdev.github.io/portfolio/assest/image/about-img.png" alt="Female sitting at desktop" class="animated-image" />
+        </div>
+        <div class="col-md-6 text-white">
+        <h3 class="text-center mb-4">About Me</h3>
+          <p>
+           I’m Sidra Yasmeen, a passionate Front-End Developer with experience in crafting interactive, responsive, and performance-driven web applications. I specialize in HTML, CSS, JavaScript, and React.js, and I’m constantly exploring new tools and technologies to deliver clean, scalable code. 
+          </p>
+          <p>
+           Whether it's building a landing page or collaborating on full-stack solutions, I bring attention to detail, user-centered design, and a strong problem-solving mindset to every project.
+          </p>
+          <a href="#contact" class="btn btn-custom">Get In Touch</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-
-  <section id="skills" class="skills-section">
-    <h2 class="text-center">Skills</h2>
-    <div class="row text-center">
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+<!-- Skills -->
+<section id="skills" class="skills-section scroll-animate">
+  <div class="container">
+    <h2 class="text-center mb-5">Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-html5 skill-icon"></i>
           <h5>HTML5</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-css3-alt skill-icon"></i>
           <h5>CSS3</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-js skill-icon"></i>
           <h5>JavaScript</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-react skill-icon"></i>
           <h5>React</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-node skill-icon"></i>
           <h5>Node.js</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-bootstrap skill-icon"></i>
           <h5>Bootstrap</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-git-alt skill-icon"></i>
           <h5>Git</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-github skill-icon"></i>
           <h5>GitHub</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-npm skill-icon"></i>
           <h5>NPM</h5>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fas fa-database skill-icon"></i>
           <h5>MYSQL</h5>
         </div>
       </div>
- <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fas fa-cogs skill-icon"></i>
           <h5>REST APIs</h5>
         </div>
       </div>
- <div class="col-md-4 mb-4">
-        <div class="skill-card p-4">
+      <div class="col-md-4">
+        <div class="skill-card p-4 position-relative">
           <i class="fab fa-python skill-icon"></i>
           <h5>PYTHON</h5>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <h2 class="text-center">Projects</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3">
-          <h5>Learn Code Pro Website</h5>
-          <p>A project related to courses</p>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="skill-card p-3">
-          <h5>Call Center Website</h5>
-          <p>A project related to call center</p>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
-  </section>
-<section id="experience" class="section">
-  <h2 class="text-center">Experience</h2>
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <div class="card p-4">
-        <h5 class="text-center">Full Stack Developer Intern</h5>
-        <p class="text-center"><strong>Company:</strong> Technohacks</p>
-        <p class="text-center"><strong>Duration:</strong> 1 Month (Remote)</p>
-        <p class="text-center">Worked on full-stack web development tasks, contributed to building responsive user interfaces and integrating APIs using MERN stack.</p>
-      </div>
-    </div>
-    <div class="col-md-6 mb-4">
-      <div class="card p-4">
-        <h5 class="text-center">Web Development Intern</h5>
-        <p class="text-center"><strong>Company:</strong> InternBoot</p>
-        <p class="text-center"><strong>Duration:</strong> 1 Month (Remote)</p>
-        <p class="text-center">Focused on front-end development, implemented UI components, optimized pages for responsiveness, and collaborated on team projects.</p>
       </div>
     </div>
   </div>
 </section>
 
-  <section class="text-center" id="contact" class="section container">
-    <h2>Connect with Me</h2>
-    <p><i class="fas fa-mail mail-icon"></i>
-sidrayasmeen081@gmail.com</p>
-    <p><i class="fab fa-github github-icon"></i>
-<a href="https://github.com/sidra112233">github</a></p>
-    <p><i class="fab fa-linkedin linkedin-icon"></i>
-<a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/">linkedin</a></p>
-  </section>
+<!-- Projects -->
+<section id="projects" class="project-section scroll-animate">
+  <div class="container">
+    <h2 class="text-center mb-5">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card project-card p-3 h-100">
+          <h5>Learn Code Pro Website</h5>
+          <p>A responsive educational platform designed to offer coding tutorials and courses for beginners and intermediate learners. Features include course listings, instructor profiles, and user-friendly navigation to enhance the learning experience.
+</p>
+          <a href="https://github.com/sidra112233/LearnCodeProo" class="btn btn-custom mt-3">View Project</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card p-3 h-100">
+          <h5>Call Center Website</h5>
+          <p>A modern web interface for a call center service provider, including service descriptions, contact integration, client testimonials, and an interactive inquiry form. Built for fast loading, mobile responsiveness, and ease of communication.
+</p>
+          <a href="https://github.com/sidra112233/Project1" class="btn btn-custom mt-3">View Project</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card p-3 h-100">
+          <h5>Portfolio</h5>
+          <p>A dynamic personal portfolio showcasing my skills, projects, and experience as a Front-End & Full-Stack Developer. Features include animated sections, a canvas particle background, responsive design, and smooth scrolling interactions.
 
-  <footer class="footer">
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
-  </footer>
+</p>
+          <a href="https://sidra112233.github.io/portfolio/" class="btn btn-custom mt-3">View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const canvas = document.getElementById("cobweb");
-    const ctx = canvas.getContext("2d");
+<!-- Experience -->
+<section id="experience" class="experience-section scroll-animate">
+  <div class="container">
+    <h2 class="text-center mb-5">Experience</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card experience-card p-4 h-100">
+          <h5 class="mb-3 text-center">Full Stack Developer Intern</h5>
+          <p class="text-center"><strong>Company:</strong> Technohacks</p>
+          <p class="text-center"><strong>Duration:</strong> 1 Month (Remote)</p>
+          <p class="text-center">Worked on full-stack web development tasks, contributed to building responsive user interfaces and integrating APIs using MERN stack.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card experience-card p-4 h-100">
+          <h5 class="mb-3 text-center">Web Development Intern</h5>
+          <p class="text-center"><strong>Company:</strong> InternBoot</p>
+          <p class="text-center"><strong>Duration:</strong> 1 Month (Remote)</p>
+          <p class="text-center">Focused on front-end development, implemented UI components, optimized pages for responsiveness, and collaborated on team projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-section scroll-animate py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Connect with Me</h2>
+    <div class="d-flex justify-content-center flex-wrap gap-4">
+      <p><a href="sidrayasmeen081@gmail.com" target="_blank"><i class="fas fa-envelope"></i> mail</a></p>
+      <p><a href="https://github.com/sidra112233" target="_blank"><i class="fab fa-github"></i> github</a></p>
+      <p><a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank"><i class="fab fa-linkedin"></i> linkedin</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Sidra Yasmeen. All rights reserved.</p>
+    <div class="social-icons mt-2">
+      <a href="https://github.com/sidra112233" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:sidrayasmeen081@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Canvas background animation script -->
+<script>
+  const canvas = document.getElementById("cobweb");
+  const ctx = canvas.getContext("2d");
+  function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
 
-    let particlesArray;
-    const maxDistance = 120;
-    const particleCount = 100;
+  const particles = [];
+  const particleCount = 120;
+  const maxDistance = 120;
+  const colors = [
+    getComputedStyle(document.documentElement).getPropertyValue('--moonstone').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--honeydew').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--vanilla').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--atomic-tangerine').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--sandy-brown').trim()
+  ];
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = 2;
-        this.speedX = (Math.random() - 0.5) * 1.5;
-        this.speedY = (Math.random() - 0.5) * 1.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = "#58a6ff";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
+  class Particle {
+    constructor() {
+      this.x = Math.random() * window.innerWidth;
+      this.y = Math.random() * window.innerHeight;
+      this.size = Math.random() * 2.5 + 1;
+      this.speedX = (Math.random() - 0.5) * 1.7;
+      this.speedY = (Math.random() - 0.5) * 1.7;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.opacity = Math.random() * 0.5 + 0.5;
+      this.fadeDirection = Math.random() > 0.5 ? 0.01 : -0.01;
     }
-
-    function initParticles() {
-      particlesArray = [];
-      for (let i = 0; i < particleCount; i++) {
-        particlesArray.push(new Particle());
-      }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.opacity += this.fadeDirection;
+      if (this.opacity <= 0.3 || this.opacity >= 1) this.fadeDirection *= -1;
+      if (this.x < 0 || this.x > window.innerWidth) this.speedX *= -1;
+      if (this.y < 0 || this.y > window.innerHeight) this.speedY *= -1;
     }
+    draw() {
+      ctx.globalAlpha = this.opacity;
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
 
-    function connectParticles() {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a + 1; b < particlesArray.length; b++) {
-          const dx = particlesArray[a].x - particlesArray[b].x;
-          const dy = particlesArray[a].y - particlesArray[b].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+  function initParticles() {
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
 
-          if (distance < maxDistance) {
-            ctx.strokeStyle = `rgba(88, 166, 255, ${1 - distance / maxDistance})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-            ctx.stroke();
-          }
+  function connect() {
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a + 1; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxDistance) {
+          ctx.strokeStyle = `rgba(15, 163, 177, ${(1 - dist / maxDistance) * 0.5})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
         }
       }
     }
+  }
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      connectParticles();
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initParticles();
+  function animate() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
     });
+    connect();
+    requestAnimationFrame(animate);
+  }
 
-    initParticles();
-    animate();
+  initParticles();
+  animate();
 
-    const roles = ["Front End Developer", "MERN Stack Developer", "Full Stack Developer"];
-    let roleIndex = 0;
-    const roleElement = document.getElementById("typing-role");
+  // Typewriter effect for roles
+  const roles = ["Front End Developer", "MERN Stack Developer", "Full Stack Developer"];
+  let roleIdx = 0;
+  const roleEl = document.getElementById("typing-role");
+  function typeRoles() {
+    const current = roles[roleIdx];
+    roleEl.style.opacity = 0;
+    setTimeout(() => {
+      roleEl.textContent = current;
+      roleEl.style.transition = "opacity 0.5s ease";
+      roleEl.style.opacity = 1;
+    }, 100);
+    setTimeout(() => {
+      roleEl.style.opacity = 0;
+      setTimeout(() => {
+        roleIdx = (roleIdx + 1) % roles.length;
+        typeRoles();
+      }, 500);
+    }, 2500);
+  }
+  typeRoles();
 
-    setInterval(() => {
-      roleElement.textContent = roles[roleIndex];
-      roleIndex = (roleIndex + 1) % roles.length;
-    }, 1000);
-  </script>
+  // Scroll animation
+  const scrollEls = document.querySelectorAll('.scroll-animate');
+  const isInView = (el, divisor=1.25) => {
+    const rect = el.getBoundingClientRect();
+    return rect.top <= (window.innerHeight || document.documentElement.clientHeight) / divisor;
+  }
+  const animateOnScroll = () => {
+    scrollEls.forEach(el => {
+      if (isInView(el)) {
+        el.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll();
+
+  // Navbar hide on scroll
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop && st > 100) {
+      navbar.style.transform = 'translateY(-100%)';
+    } else {
+      navbar.style.transform = 'translateY(0)';
+    }
+    lastScrollTop = st;
+  });
+</script>
 </body>
 </html>
