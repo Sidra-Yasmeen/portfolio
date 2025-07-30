@@ -40,63 +40,6 @@
     color: var(--moonstone);
     transform: translateY(-2px);
   }
-.follow-me-sidebar {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%) rotate(-90deg);
-      transform-origin: left top;
-      display: flex;
-      align-items: center;
-      background: transparent;
-      cursor: pointer;
-      /* Transition for smooth animation */
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-      padding: 10px;
-      z-index: 9999;
-    }
-
-    /* Animate rotation to 0 and add a slight scale on hover */
-    .follow-me-sidebar:hover {
-      transform: translateY(-50%) rotate(0deg) scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
-
-    /* Style for the "Follow Me" label */
-    .follow-tag {
-    background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 20px;
-      margin-right: 20px;
-      font-weight: bold;
-      font-size: 14px;
-      letter-spacing: 1px;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-    }
-
-    /* Icons style */
-    .social-link {
-      margin: 0 10px;
-      font-size: 24px;
-      color: #555;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    /* Hover effect on icons */
-    .social-link:hover {
-      color: var(--atomic-tangerine);
-      transform: scale(1.2);
-    }
-
-    /* Platform-specific colors */
-    .linkedin {
-      color: #0e76a8;
-    }
-    .github {
-      color: #333;
-    }
   /* Navbar */
   .navbar {
     background-color: var(--light-shadow);
@@ -516,19 +459,69 @@ alighn-item:center;
     .typing-role { font-size: 1.4rem; }
     .navbar-brand { font-size: 1.4rem; }
   }
+  .follow-me-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left top;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      cursor: pointer;
+      /* Transition for smooth animation */
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      padding: 10px;
+      z-index: 9999;
+    }
+
+    /* Animate rotation to 0 and add a slight scale on hover */
+    .follow-me-sidebar:hover {
+      transform: translateY(-50%) rotate(0deg) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Style for the "Follow Me" label */
+    .follow-tag {
+    background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 20px;
+      margin-right: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    /* Icons style */
+    .social-link {
+      margin: 0 10px;
+      font-size: 24px;
+      color: #555;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    /* Hover effect on icons */
+    .social-link:hover {
+      color: var(--atomic-tangerine);
+      transform: scale(1.2);
+    }
+
+    /* Platform-specific colors */
+    .linkedin {
+      color: #0e76a8;
+    }
+    .github {
+      color: #333;
+    }
 </style>
 </head>
 <body>
 <!-- Canvas for background animation -->
 <canvas id="cobweb"></canvas>
- <div class="follow-me-sidebar">
-    <div class="follow-tag">Follow Me</div>
-    <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/sidra112233" target="_blank" class="social-link github" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
+ 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3 px-4">
   <a class="navbar-brand" href="#">Sidra Yasmeen</a>
@@ -545,7 +538,6 @@ alighn-item:center;
     </ul>
   </div>
 </nav>
-
 <!-- Hero -->
 <section class="hero" id="home">
   <h1>Hello, I'm <span class="gradient-text">Sidra Yasmeen</span></h1>
@@ -744,6 +736,14 @@ alighn-item:center;
     </div>
   </div>
 </footer>
+<div class="follow-me-sidebar">
+    <div class="follow-tag">Follow Me</div>
+    <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/sidra112233" target="_blank" class="social-link github" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Canvas background animation script -->
 <script>
