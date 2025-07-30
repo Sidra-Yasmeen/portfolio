@@ -820,6 +820,20 @@ alighn-item:center;
     }
     lastScrollTop = st;
   });
+  document.addEventListener('DOMContentLoaded', function () {
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        // Check if the menu is expanded
+        var bsCollapse = document.getElementById('navbarNav');
+        var bsCollapseInstance = bootstrap.Collapse.getInstance(bsCollapse);
+        if (bsCollapseInstance && bsCollapseInstance._isShown) {
+          bsCollapseInstance.hide();
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>
