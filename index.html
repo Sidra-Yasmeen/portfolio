@@ -4,25 +4,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sidra Yasmeen - Portfolio</title>
-<!-- Bootstrap & Font Awesome -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style>
   :root {
-    /* New palette */
     --moonstone: #0fa3b1;
     --honeydew: #d9e5d6;
     --vanilla: #eddea4;
     --atomic-tangerine: #f7a072;
     --sandy-brown: #ff9b42;
-    /* Light variants for overlays, shadows etc. */
     --light-shadow: rgba(15, 163, 177, 0.3);
     --hover-shadow: rgba(247, 160, 114, 0.4);
   }
   
-  /* Fix for horizontal scrolling on mobile */
   html, body {
     margin: 0;
     padding: 0;
@@ -55,7 +51,6 @@
     color: var(--moonstone);
     transform: translateY(-2px);
   }
-  /* Navbar */
   .navbar {
     background-color: var(--light-shadow);
     box-shadow: 0 2px 15px rgba(0,0,0,0.4);
@@ -91,7 +86,6 @@ height: 110px;
     transition: all 0.3s ease;
   }
   
-  /* Navbar toggle button adjustments */
   .navbar-toggler {
     border: none;
     padding: 0.25rem 0.5rem;
@@ -108,25 +102,24 @@ height: 110px;
     width: 24px;
     height: 24px;
   }
-  /* Mobile navbar adjustments */
   @media (max-width: 768px) {
     body {
-      padding-top: 60px; /* Adjust for smaller navbar on mobile */
+      padding-top: 60px;
     }
     
     .navbar {
       padding: 0.5rem;
     }
     .navbar-brand img {
-  height: 50px;   /* controls logo height */
-  width: auto;    /* keeps aspect ratio */
+  height: 50px;  
+  width: auto;  
 }
     .navbar-collapse {
       position: absolute;
-      top: 100%; /* Position right below navbar */
+      top: 100%; 
       left: 0;
       width: 100%;
-      background-color: rgba(13, 17, 23, 0.95); /* Match body background with transparency */
+      background-color: rgba(13, 17, 23, 0.95);
       z-index: 999;
       padding: 1rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
@@ -160,7 +153,6 @@ height: 110px;
     }
   }
   
-  /* Hero section */
   .hero {
     padding: 120px 15px 80px;
     text-align: center;
@@ -201,7 +193,6 @@ height: 110px;
     font-size: 1.2rem;
     line-height: 1.6;
   }
-  /* Sections */
   .section {
     background-color: #0b1120;
     border-radius: 12px;
@@ -212,7 +203,6 @@ height: 110px;
     overflow: hidden;
     width: calc(100% - 30px);
   }
-  /* Gradient bar on sections */
   .section::before {
     content: '';
     position: absolute;
@@ -223,7 +213,6 @@ height: 110px;
     background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
     border-radius: 0 4px 4px 0;
   }
-  /* About section styles */
   .about-container {
     background: transparent;
     border-radius: 15px;
@@ -265,7 +254,6 @@ height: 110px;
     margin-bottom: 40px;
     color: #fff;
   }
-  /* Underline with gradient */
   .about-section h2::after {
     content: '';
     position: absolute;
@@ -276,7 +264,6 @@ height: 110px;
     background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
     border-radius: 2px;
   }
-  /* Dot */
   .about-section h2::before {
     content: '';
     position: absolute;
@@ -285,7 +272,6 @@ height: 110px;
     height: 10px;
     background-color: var(--atomic-tangerine);
     border-radius: 50%;
-    /* Start position at the beginning of underline */
     left: 20%;
     transform: translateX(-50%);
     animation: rollAlong 2s linear infinite;
@@ -1346,4 +1332,5 @@ height: 110px;
   });
 </script>
 </body>
+
 </html>
