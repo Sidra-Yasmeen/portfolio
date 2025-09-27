@@ -332,7 +332,6 @@ height: 110px;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(255, 155, 66, 0.3);
   }
-  /* Skills section */
   .skills-section {
     position: relative;
     font-size: 2.8rem;
@@ -360,7 +359,6 @@ height: 110px;
     background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
     border-radius: 2px;
   }
-  /* Dot */
   .skills-section h2::before {
     content: '';
     position: absolute;
@@ -457,7 +455,6 @@ height: 110px;
     height: 10px;
     background-color: var(--atomic-tangerine);
     border-radius: 50%;
-    /* Start position at the beginning of underline */
     left: 20%;
     transform: translateX(-50%);
     animation: rollAlong 2s linear infinite;
@@ -610,17 +607,14 @@ height: 110px;
       align-items: center;
       background: transparent;
       cursor: pointer;
-      /* Transition for smooth animation */
       transition: transform 0.6s ease, box-shadow 0.6s ease;
       padding: 10px;
       z-index: 9999;
     }
-    /* Animate rotation to 0 and add a slight scale on hover */
     .follow-me-sidebar:hover {
       transform: translateY(-50%) rotate(0deg) scale(1.05);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    /* Style for the "Follow Me" label */
     .follow-tag {
     background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
       color: #fff;
@@ -633,19 +627,16 @@ height: 110px;
       white-space: nowrap;
       transition: all 0.3s ease;
     }
-    /* Icons style */
     .social-link {
       margin: 0 10px;
       font-size: 24px;
       color: #555;
       transition: color 0.3s, transform 0.3s;
     }
-    /* Hover effect on icons */
     .social-link:hover {
       color: var(--atomic-tangerine);
       transform: scale(1.2);
     }
-    /* Platform-specific colors */
     .linkedin {
       color: #0e76a8;
     }
@@ -653,14 +644,12 @@ height: 110px;
       color: #333;
     }
     
-    /* Hide sidebar on mobile */
     @media(max-width: 768px) {
       .follow-me-sidebar {
         display: none;
       }
     }
     
-    /* Contact Section Styling */
     #connect, #contact {
       background-color: rgba(11, 17, 32, 0.7);
       border-radius: 15px;
@@ -1328,5 +1317,6 @@ height: 110px;
 </body>
 
 </html>
+
 
 
