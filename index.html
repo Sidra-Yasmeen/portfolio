@@ -7,7 +7,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style>
   :root {
     --moonstone: #0fa3b1;
@@ -427,27 +426,50 @@ height: 110px;
     transform: scale(1.2);
     color: var(--moonstone);
   }
-  .project-section h2,.experience-section h2,.contact-section h2 {
-      position: relative;
-      display: inline-block;
-      color: #fff;
-      font-size: 2.6rem;
+  
+  /* PROJECTS SECTION - ENHANCED */
+  .projects-section {
+    background-color: #0b1120;
+    border-radius: 12px;
+    padding: 60px 15px;
+    margin: 0 15px 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 30px);
   }
-  .project-section h2::after, .experience-section h2::after,.contact-section h2::after {
+  
+  .projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 0 4px 4px 0;
+  }
+  
+  .projects-section h2 {
+    position: relative;
+    display: inline-block;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+  
+  .projects-section h2::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 0;
+    left: 0%;
     width: 100%;
     height: 3px;
     background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
     border-radius: 2px;
   }
-.project-card img {
-  height: 180px; 
-  object-fit: cover; 
-}
-  .project-section h2::before,.experience-section h2::before,.contact-section h2::before {
+  
+  .projects-section h2::before {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -459,46 +481,493 @@ height: 110px;
     transform: translateX(-50%);
     animation: rollAlong 2s linear infinite;
   }
-  @keyframes rollAlong {
-     0% {
-      left: 0%;
-    }
-    50% {
-      left: 100%;
-    }
-    100% {
-      left: 0%;
-    }
-  }
-  .project-card, .experience-card {
-    background-color: #2c3654;
+  
+  .project-card {
+    background-color: #1f2641;
     color: #fff;
     border-radius: 15px;
-    padding: 20px;
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     border: 2px solid var(--atomic-tangerine);
-    text-align: justify;
-    width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
-  .project-card:hover, .experience-card:hover {
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+  }
+  
+  .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 25px rgba(15, 163, 177, 0.4);
   }
-  .project-card h5 ,.experience-card h5 {
+  
+  .project-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover .project-img {
+    transform: scale(1.05);
+  }
+  
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 163, 177, 0.2), rgba(247, 160, 114, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+  
+  .project-overlay-icon {
+    font-size: 3rem;
+    color: white;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover .project-overlay-icon {
+    transform: scale(1);
+  }
+  
+  .project-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-bottom: 15px;
     color: var(--sandy-brown);
     text-align: center;
   }
-  .project-card p ,.experience-card p ,.contact-card p{
+  
+  .project-description {
+    margin-bottom: 20px;
+    flex-grow: 1;
+    text-align: justify;
+    text-justify: inter-word;
+    color: #EDDEA4;
+  }
+  
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .tech-tag {
+    background-color: rgba(15, 163, 177, 0.2);
+    color: var(--moonstone);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .project-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+  }
+  
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(15, 163, 177, 0.3);
+  }
+  
+  .project-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(15, 163, 177, 0.4);
+  }
+  
+  /* EXPERIENCE SECTION */
+  .experience-section {
+    background-color: #0b1120;
+    border-radius: 12px;
+    padding: 60px 15px;
+    margin: 0 15px 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 30px);
+  }
+  
+  .experience-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 0 4px 4px 0;
+  }
+  
+  .experience-section h2 {
+    position: relative;
+    display: inline-block;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+  
+  .experience-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 2px;
+  }
+  
+  .experience-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--atomic-tangerine);
+    border-radius: 50%;
+    left: 20%;
+    transform: translateX(-50%);
+    animation: rollAlong 2s linear infinite;
+  }
+  
+  .experience-card {
+    background-color: #1f2641;
+    color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    border: 2px solid var(--atomic-tangerine);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+  }
+  
+  .experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(15, 163, 177, 0.4);
+  }
+  
+  .experience-card h5 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--sandy-brown);
+    text-align: center;
+  }
+  
+  .experience-card p {
     text-align: justify;
     text-justify: inter-word; 
     color: #EDDEA4;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    margin-bottom: 10px;
   }
+  
+  .experience-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  .experience-duration {
+    display: flex;
+    align-items: center;
+  }
+  
+  .experience-duration i {
+    margin-right: 5px;
+    color: var(--sandy-brown);
+  }
+  
+  /* CONTACT SECTION */
+  #connect, #contact {
+    background-color: rgba(11, 17, 32, 0.7);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(15, 163, 177, 0.15);
+    border: 1px solid rgba(15, 163, 177, 0.3);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+  }
+
+  #connect::before, #contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 0 4px 4px 0;
+  }
+
+  #connect h2, #contact h2 {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+
+  #connect h2::after, #contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
+    border-radius: 2px;
+  }
+
+  #connect h2::before, #contact h2::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--atomic-tangerine);
+    border-radius: 50%;
+    left: 0%;
+    transform: translateX(-50%);
+    animation: rollAlong 2s linear infinite;
+  }
+
+  /* Connect Links Styling */
+  #connect .d-flex a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(15, 163, 177, 0.2), rgba(247, 160, 114, 0.2));
+    border: 1px solid rgba(247, 160, 114, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-width: 150px;
+    margin:10px;
+  }
+
+  #connect .d-flex a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(15, 163, 177, 0.3);
+    background: linear-gradient(135deg, rgba(15, 163, 177, 0.3), rgba(247, 160, 114, 0.3));
+    border-color: var(--moonstone);
+  }
+
+  #connect .d-flex i {
+    margin-right: 10px;
+    font-size: 1.3rem;
+    color: var(--sandy-brown);
+    transition: all 0.3s ease;
+  }
+
+  #connect .d-flex a:hover i {
+    color: var(--moonstone);
+    transform: scale(1.2);
+  }
+
+    /* Form Styling */
+    #contact form {
+      background: rgba(31, 38, 65, 0.7);
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid rgba(247, 160, 114, 0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    #contact .form-control {
+      background-color: rgba(13, 17, 23, 0.7);
+      border: 1px solid rgba(15, 163, 177, 0.3);
+      color: #fff;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #contact .form-control:focus {
+      background-color: rgba(13, 17, 23, 0.9);
+      border-color: var(--moonstone);
+      box-shadow: 0 0 0 0.25rem rgba(15, 163, 177, 0.25);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    #contact .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    #contact textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    #contact .btn-primary {
+      background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
+      border: none;
+      padding: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(15, 163, 177, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact .btn-primary:hover {
+      background: linear-gradient(135deg, var(--sandy-brown), var(--atomic-tangerine));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(247, 160, 114, 0.4);
+    }
+
+    #contact .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    #contact .btn-primary:hover::before {
+      left: 100%;
+    }
+
+  /* Animation for form elements */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #connect .d-flex a, #contact .form-control, #contact .btn-primary {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  #connect .d-flex a:nth-child(1) { animation-delay: 0.1s; }
+  #connect .d-flex a:nth-child(2) { animation-delay: 0.2s; }
+  #connect .d-flex a:nth-child(3) { animation-delay: 0.3s; }
+
+  #contact .form-control:nth-of-type(1) { animation-delay: 0.1s; }
+  #contact .form-control:nth-of-type(2) { animation-delay: 0.2s; }
+  #contact .form-control:nth-of-type(3) { animation-delay: 0.3s; }
+  #contact .btn-primary { animation-delay: 0.4s; }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #connect, #contact {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    #connect h2, #contact h2 {
+      font-size: 1.8rem;
+    }
+    
+    #connect .d-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    #connect .d-flex a {
+      width: 100%;
+      max-width: 250px;
+      margin-bottom: 15px;
+    }
+    
+    #contact form {
+      padding: 20px;
+    }
+  }
+
+  /* Scroll animation for contact section */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
   .footer p {
     margin: 10px 0;
     color: #aaa;
@@ -649,235 +1118,6 @@ height: 110px;
         display: none;
       }
     }
-    
-    #connect, #contact {
-      background-color: rgba(11, 17, 32, 0.7);
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 30px rgba(15, 163, 177, 0.15);
-      border: 1px solid rgba(15, 163, 177, 0.3);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
-    }
-
-    #connect::before, #contact::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--atomic-tangerine), var(--moonstone));
-      border-radius: 0 4px 4px 0;
-    }
-
-    #connect h2, #contact h2 {
-      position: relative;
-      display: inline-block;
-      color: #fff;
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-    }
-
-    #connect h2::after, #contact h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, var(--atomic-tangerine), var(--moonstone));
-      border-radius: 2px;
-    }
-
-    #connect h2::before, #contact h2::before {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      width: 10px;
-      height: 10px;
-      background-color: var(--atomic-tangerine);
-      border-radius: 50%;
-      left: 0%;
-      transform: translateX(-50%);
-      animation: rollAlong 2s linear infinite;
-    }
-
-    /* Connect Links Styling */
-    #connect .d-flex a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.1rem;
-      padding: 12px 20px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(15, 163, 177, 0.2), rgba(247, 160, 114, 0.2));
-      border: 1px solid rgba(247, 160, 114, 0.3);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      min-width: 150px;
-      margin:30px;
-    }
-
-    #connect .d-flex a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(15, 163, 177, 0.3);
-      background: linear-gradient(135deg, rgba(15, 163, 177, 0.3), rgba(247, 160, 114, 0.3));
-      border-color: var(--moonstone);
-    }
-
-    #connect .d-flex i {
-      margin-right: 10px;
-      font-size: 1.3rem;
-      color: var(--sandy-brown);
-      transition: all 0.3s ease;
-    }
-
-    #connect .d-flex a:hover i {
-      color: var(--moonstone);
-      transform: scale(1.2);
-    }
-
-    /* Form Styling */
-    #contact form {
-      background: rgba(31, 38, 65, 0.7);
-      border-radius: 15px;
-      padding: 25px;
-      border: 1px solid rgba(247, 160, 114, 0.2);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(5px);
-    }
-
-    #contact .form-control {
-      background-color: rgba(13, 17, 23, 0.7);
-      border: 1px solid rgba(15, 163, 177, 0.3);
-      color: #fff;
-      padding: 12px 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    #contact .form-control:focus {
-      background-color: rgba(13, 17, 23, 0.9);
-      border-color: var(--moonstone);
-      box-shadow: 0 0 0 0.25rem rgba(15, 163, 177, 0.25);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    #contact .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    #contact textarea.form-control {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    #contact .btn-primary {
-      background: linear-gradient(135deg, var(--atomic-tangerine), var(--moonstone));
-      border: none;
-      padding: 12px;
-      font-weight: 600;
-      border-radius: 8px;
-      color: #fff;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(15, 163, 177, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #contact .btn-primary:hover {
-      background: linear-gradient(135deg, var(--sandy-brown), var(--atomic-tangerine));
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(247, 160, 114, 0.4);
-    }
-
-    #contact .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    #contact .btn-primary:hover::before {
-      left: 100%;
-    }
-
-    /* Animation for form elements */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    #connect .d-flex a, #contact .form-control, #contact .btn-primary {
-      animation: fadeInUp 0.6s ease forwards;
-      opacity: 0;
-    }
-
-    #connect .d-flex a:nth-child(1) { animation-delay: 0.1s; }
-    #connect .d-flex a:nth-child(2) { animation-delay: 0.2s; }
-    #connect .d-flex a:nth-child(3) { animation-delay: 0.3s; }
-
-    #contact .form-control:nth-of-type(1) { animation-delay: 0.1s; }
-    #contact .form-control:nth-of-type(2) { animation-delay: 0.2s; }
-    #contact .form-control:nth-of-type(3) { animation-delay: 0.3s; }
-    #contact .btn-primary { animation-delay: 0.4s; }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      #connect, #contact {
-        padding: 20px;
-        margin-bottom: 20px;
-      }
-      
-      #connect h2, #contact h2 {
-        font-size: 1.8rem;
-      }
-      
-      #connect .d-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      #connect .d-flex a {
-        width: 100%;
-        max-width: 250px;
-        margin-bottom: 15px;
-      }
-      
-      #contact form {
-        padding: 20px;
-      }
-    }
-
-    /* Scroll animation for contact section */
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .scroll-animate.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
 </style>
 </head>
 <body>
@@ -895,6 +1135,7 @@ height: 110px;
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -940,73 +1181,73 @@ height: 110px;
     <h2 class="text-center mb-5">Skills</h2>
     <div class="row g-4">
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="100">
           <i class="fab fa-html5 skill-icon"></i>
           <h5>HTML5</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="200">
           <i class="fab fa-css3-alt skill-icon"></i>
           <h5>CSS3</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="300">
           <i class="fab fa-js skill-icon"></i>
           <h5>JavaScript</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="400">
           <i class="fab fa-react skill-icon"></i>
           <h5>React</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="500">
           <i class="fab fa-node skill-icon"></i>
           <h5>Node.js</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="600">
           <i class="fab fa-bootstrap skill-icon"></i>
           <h5>Bootstrap</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="700">
           <i class="fab fa-git-alt skill-icon"></i>
           <h5>Git</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="800">
           <i class="fab fa-github skill-icon"></i>
           <h5>GitHub</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="900">
           <i class="fab fa-npm skill-icon"></i>
           <h5>NPM</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="1000">
           <i class="fas fa-database skill-icon"></i>
           <h5>MYSQL</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="1100">
           <i class="fas fa-cogs skill-icon"></i>
           <h5>REST APIs</h5>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
-        <div class="skill-card p-4 position-relative">
+        <div class="skill-card p-4 position-relative" data-aos="fade-up" data-aos-delay="1200">
           <i class="fab fa-python skill-icon"></i>
           <h5>PYTHON</h5>
         </div>
@@ -1015,186 +1256,354 @@ height: 110px;
   </div>
 </section>
 <!-- Projects Section -->
-<section id="projects" class="py-5 bg-dark text-light">
+<section id="projects" class="projects-section scroll-animate">
   <div class="container">
     <h2 class="text-center mb-5">My Projects</h2>
     <div class="row g-4">
-
       <!-- Portfolio Website -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Portfolio Website</h5>
-            <p class="card-text">A responsive personal portfolio showcasing my work and skills.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/portfolio" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Portfolio Website" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Portfolio Website</h5>
+            <p class="project-description">A responsive personal portfolio showcasing my work and skills with modern design and animations.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/portfolio" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Product Landing Page -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Product Landing Page</h5>
-            <p class="card-text">A modern product landing page built with HTML & CSS.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/Product-landing-page-" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1557829023-7bf30373f39e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product Landing Page" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Product Landing Page</h5>
+            <p class="project-description">A modern product landing page built with HTML & CSS featuring responsive design and smooth animations.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Bootstrap</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/Product-landing-page-" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Chat Dashboard -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Chat Dashboard</h5>
-            <p class="card-text">Interactive chat dashboard with dynamic data and modern UI.</p>
-            <div class="mt-auto">
-              <a href="#" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1566248997006-f05c1ba987c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chat Dashboard" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Chat Dashboard</h5>
+            <p class="project-description">Interactive chat dashboard with dynamic data and modern UI featuring real-time messaging capabilities.</p>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+            </div>
+            <div class="project-links">
+              <a href="#" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Project Management Dashboard -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Project Management Dashboard</h5>
-            <p class="card-text">A JavaScript-based dashboard for managing projects and tasks.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/project-management-dashboard" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1559028006-44a273b9fc90?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Project Management Dashboard" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Project Management Dashboard</h5>
+            <p class="project-description">A JavaScript-based dashboard for managing projects and tasks with drag-and-drop functionality.</p>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/project-management-dashboard" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- CRM Dashboard -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">CRM Dashboard</h5>
-            <p class="card-text">A custom CRM dashboard built with JavaScript to manage customer data.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/crm" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1557804506-6691486ccc0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="CRM Dashboard" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">CRM Dashboard</h5>
+            <p class="project-description">A custom CRM dashboard built with JavaScript to manage customer data with interactive charts.</p>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/crm" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- E-commerce Website -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">E-commerce Website</h5>
-            <p class="card-text">A full-featured e-commerce store built with HTML, CSS & JavaScript.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/ecommerce" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="E-commerce Website" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">E-commerce Website</h5>
+            <p class="project-description">A full-featured e-commerce store built with HTML, CSS & JavaScript with shopping cart functionality.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/ecommerce" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Travel Agency Page -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Travel Agency Page</h5>
-            <p class="card-text">A responsive landing page for a travel agency service.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/Travel-agency-page" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Travel Agency Page" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Travel Agency Page</h5>
+            <p class="project-description">A responsive landing page for a travel agency service with booking functionality.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/Travel-agency-page" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Pomodoro Clock -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Pomodoro Clock</h5>
-            <p class="card-text">A React-based productivity timer app to boost focus.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/Pomodoro-Clock" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="800">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pomodoro Clock" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Pomodoro Clock</h5>
+            <p class="project-description">A React-based productivity timer app to boost focus with customizable intervals.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/Pomodoro-Clock" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Calculator -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Calculator</h5>
-            <p class="card-text">A functional calculator app built using JavaScript.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/Calculator" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="900">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Calculator" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Calculator</h5>
+            <p class="project-description">A functional calculator app built using JavaScript with advanced mathematical operations.</p>
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/Calculator" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Markdown Previewer -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Markdown Previewer</h5>
-            <p class="card-text">An app to preview markdown content in real-time.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/Markdown-previewer" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="1000">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Markdown Previewer" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Markdown Previewer</h5>
+            <p class="project-description">An app to preview markdown content in real-time with syntax highlighting.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/Markdown-previewer" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Drum Machine -->
-      <div class="col-md-4">
-        <div class="card bg-secondary text-light h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Drum Machine</h5>
-            <p class="card-text">A TypeScript-based interactive drum machine project.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/Sidra-Yasmeen/drum-machine" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
-              <a href="#" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="1100">
+        <div class="project-card">
+          <div class="project-img-container">
+            <img src="https://images.unsplash.com/photo-1598300546217-7b7932f35d68?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Drum Machine" class="project-img">
+            <div class="project-overlay">
+              <i class="fas fa-eye project-overlay-icon"></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <h5 class="project-title">Drum Machine</h5>
+            <p class="project-description">A TypeScript-based interactive drum machine project with multiple sound pads.</p>
+            <div class="project-tech">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Web Audio API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Sidra-Yasmeen/drum-machine" target="_blank" class="project-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+<!-- Experience Section -->
 <section id="experience" class="experience-section scroll-animate">
   <div class="container">
     <h2 class="text-center mb-5">Experience</h2>
     <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card experience-card p-4 h-100">
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="experience-card">
           <h5 class="mb-3 text-center">Full Stack Developer Intern</h5>
-          <p class="text-center"><strong>Company:</strong> Technohacks</p>
-          <p class="text-center"><strong>Duration:</strong> 1 Month (Remote)</p>
-          <p class="text-center">Worked on full-stack web development tasks, contributed to building responsive user interfaces and integrating APIs using MERN stack.</p>
+          <div class="experience-meta">
+            <span><strong>Company:</strong> Technohacks</span>
+            <span className="experience-duration"><i className="fas fa-calendar-alt"></i> 1 Month (Remote)</span>
+          </div>
+          <p>Worked on full-stack web development tasks, contributed to building responsive user interfaces and integrating APIs using MERN stack.</p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card experience-card p-4 h-100">
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="experience-card">
           <h5 class="mb-3 text-center">Web Development Intern</h5>
-          <p class="text-center"><strong>Company:</strong> InternBoot</p>
-          <p class="text-center"><strong>Duration:</strong> 2 Month (Remote)</p>
-          <p class="text-center">Focused on front-end development, implemented UI components, optimized pages for responsiveness, and collaborated on team projects.</p>
+          <div class="experience-meta">
+            <span><strong>Company:</strong> InternBoot</span>
+            <span className="experience-duration"><i className="fas fa-calendar-alt"></i> 2 Month (Remote)</span>
+          </div>
+          <p>Focused on front-end development, implemented UI components, optimized pages for responsiveness, and collaborated on team projects.</p>
         </div>
       </div>
     </div>
@@ -1208,13 +1617,13 @@ height: 110px;
           <h2 class="mb-4">Connect with Me</h2>
           <div class="d-flex justify-content-center flex-wrap gap-4">
             <a href="mailto:sidrayasmeen081@gmail.com" target="_blank" class="col-md-6" class="text-decoration-none">
-              <i class="fas fa-envelope"></i> Email
+              <i className="fas fa-envelope"></i> Email
             </a>
             <a href="https://github.com/sidra112233" target="_blank" class="col-md-6" class="text-decoration-none">
-              <i class="fab fa-github"></i> GitHub
+              <i className="fab fa-github"></i> GitHub
             </a>
             <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank" class="col-md-6" class="text-decoration-none">
-              <i class="fab fa-linkedin"></i> LinkedIn
+              <i className="fab fa-linkedin"></i> LinkedIn
             </a>
           </div>
         </div>
@@ -1223,7 +1632,7 @@ height: 110px;
     
     <!-- Right Column: Contact Form -->
     <div class="col-md-6">
-      <section id="contact" class="scroll-animate py-5">
+    <section id="contact" class="scroll-animate py-5">
         <h2 class="text-3xl font-bold text-center mb-4">📩 Contact Me</h2>
         <form class="transparent">
           <div class="mb-3">
@@ -1242,23 +1651,23 @@ height: 110px;
   </div>
 </div>
 <!-- Footer -->
-<footer class="footer">
-  <div class="container">
+<footer className="footer">
+  <div className="container">
     <p>&copy; 2025 Sidra Yasmeen. All rights reserved.</p>
-    <div class="social-icons mt-2">
-      <a href="https://github.com/Sidra-Yasmeen" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:sidrayasmeen081@gmail.com"><i class="fas fa-envelope"></i></a>
+    <div className="social-icons mt-2">
+      <a href="https://github.com/Sidra-Yasmeen" target="_blank"><i className="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank"><i className="fab fa-linkedin"></i></a>
+      <a href="mailto:sidrayasmeen081@gmail.com"><i className="fas fa-envelope"></i></a>
     </div>
   </div>
 </footer>
-<div class="follow-me-sidebar">
-    <div class="follow-tag">Follow Me</div>
-    <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
+<div className="follow-me-sidebar">
+    <div className="follow-tag">Follow Me</div>
+    <a href="https://www.linkedin.com/in/sidra-yasmeen-044712329/" target="_blank" className="social-link linkedin" aria-label="LinkedIn">
+      <i className="fab fa-linkedin"></i>
     </a>
-    <a href="https://github.com/Sidra-Yasmeen" target="_blank" class="social-link github" aria-label="GitHub">
-      <i class="fab fa-github"></i>
+    <a href="https://github.com/Sidra-Yasmeen" target="_blank" className="social-link github" aria-label="GitHub">
+      <i className="fab fa-github"></i>
     </a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -1407,9 +1816,4 @@ height: 110px;
   });
 </script>
 </body>
-
 </html>
-
-
-
-
